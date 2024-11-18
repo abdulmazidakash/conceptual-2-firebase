@@ -5,7 +5,7 @@ const Navbar = () => {
 	return (
 		<div className="min-h-20 bg-blue-950 text-white flex items-center justify-between">
 			<div>
-				<h1 className='text-xl font-extrabold'>TEETH WIZARD</h1>
+				<h1 className='text-xl font-extrabold ml-4'>TEETH WIZARD</h1>
 			</div>
 			<div >
 				<NavLink to='/'>Home</NavLink> 
@@ -14,7 +14,7 @@ const Navbar = () => {
 				<NavLink className='ml-4' to='/profile'>Profile</NavLink> 
 			</div>
 			<div>
-				<button className='btn btn-accent'>Login</button>
+				<button className='btn btn-accent mr-4'>Login</button>
 			</div>
 		</div>
 	);
