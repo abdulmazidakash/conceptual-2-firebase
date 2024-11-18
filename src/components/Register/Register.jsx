@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { authContext } from '../AuthProvider/AuthProvider';
 
 const Register = () => {
 
-	const {handleRegister} = useContext(authContext);
+	const {handleRegister, manageProfile} = useContext(authContext);
+	const [error, setError] = useState('');
 
 	const handleSubmit = e =>{
 		e.preventDefault();
+		setError('');
 
 		const name = e.target.name.value;
 		const imageUrl = e.target.imageUrl.value;
@@ -14,9 +16,32 @@ const Register = () => {
 		const password = e.target.password.value;
 		const confirmPassword = e.target.confirmPassword.value;
 
-		console.log(name, imageUrl, email, password, confirmPassword);
+		if(password.length < 6){
+			setError('password must contain at least 6 characters');
+			return;
+		}
 
-		handleRegister(email, password);
+		if(password !== confirmPassword){
+			setError('did not match password');
+			return;
+		}
+
+		if(!/[a-z]/.test(password)){
+			setError('password must contain at least one lowercase letter');
+			return;
+		}
+
+		if(!/[A-Z]/.test(password)){
+			setError('password must contain at least one uppercase letter');
+			return;
+		}
+
+		// console.log(name, imageUrl, email, password, confirmPassword);
+
+		handleRegister(email, password)
+			.then(res =>{
+				manageProfile(name, image);
+			})
 	}
 	return (
 		<div className='w-6/12 mx-auto shadow-lg mt-8'>
@@ -53,9 +78,10 @@ const Register = () => {
 				<input name='confirmPassword' type="text" placeholder="confirm password" className="input input-bordered" required />
 				</div>
 
-				<button className='btn btn-info mt-4'>Submit</button>
+				<button className='btn btn-info mt-4'>Register</button>
 			
 			</form>
+			{error && <p className='text-red-500'>{error}</p>}
 		</div>
 	);
 };

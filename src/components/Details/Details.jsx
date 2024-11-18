@@ -6,7 +6,7 @@ import { authContext } from '../AuthProvider/AuthProvider';
 const Details = () => {
 
 	const contextValue = useContext(authContext);
-	console.log(contextValue);
+	// console.log(contextValue);
 
 	const {cost, image, treatment, description} = useLoaderData();
 	// console.log(singleData);
@@ -29,7 +29,7 @@ const Details = () => {
 				<button onClick={()=>document.getElementById('my_modal_5').showModal()} className="btn btn-primary">Book Appointment</button>
 				</div>
 			</div>
-			<Modal></Modal>
+			<Modal treatment={treatment}></Modal>
 		</div>
 	);
 };
