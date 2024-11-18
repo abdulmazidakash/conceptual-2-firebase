@@ -11,9 +11,9 @@ const Home = () => {
 
 	const { serviceData, feedBackData } = services;
 	return (
-		<div>
+		<div className=''>
 			<Banner></Banner>
-			<div className='grid grid-cols-4 w-[80%] mx-auto max-w-[1200px] gap-2 mt-8'>
+			<div className='grid grid-cols-4 gap-2 my-8'>
 				{
 					serviceData.slice(4,8).map(service => <ServiceCard service={service}></ServiceCard>)
 				}
