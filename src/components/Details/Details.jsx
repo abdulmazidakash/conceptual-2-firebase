@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Modal from '../Modal/Modal';
+import { authContext } from '../AuthProvider/AuthProvider';
 
 const Details = () => {
+
+	const contextValue = useContext(authContext);
+	console.log(contextValue);
 
 	const {cost, image, treatment, description} = useLoaderData();
 	// console.log(singleData);
@@ -13,10 +17,11 @@ const Details = () => {
 			className="hero min-h-screen"
 			style={{
 				backgroundImage:`url(${image})`,
+				borderRadius: '20px',
 			}}>
 			<div className="hero-overlay bg-opacity-60"></div>
 			<div className="hero-content text-neutral-content text-center">
-				<div className="max-w-md">
+				<div className="max-w-2xl">
 				<h1 className="mb-5 text-5xl font-bold">{treatment}</h1>
 				<p className="mb-5">
 					{description}

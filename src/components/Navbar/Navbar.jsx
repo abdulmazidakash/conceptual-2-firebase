@@ -14,7 +14,9 @@ const Navbar = () => {
 				<NavLink className='ml-4' to='/profile'>Profile</NavLink> 
 			</div>
 			<div>
-				<button className='btn btn-accent mr-4'>Login</button>
+				<NavLink to='/login'>
+					<button className='btn btn-accent mr-4'>Login</button>
+				</NavLink>
 			</div>
 		</div>
 	);
